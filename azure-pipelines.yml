@@ -23,29 +23,6 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: Npm@1
-  displayName: run unit tests
-  inputs:
-    command: 'custom'
-    customCommand: 'run test:ci'
-
-- task: Npm@1
-  displayName: run coverage
-  inputs:
-    command: 'custom'
-    customCommand: 'run test:coverage'
-
-- task: PublishTestResults@2
-  displayName: 'Supply npm test results to pipelines'
-  condition: succeededOrFailed() # because otherwise we won't know what tests failed
-  inputs:
-    testResultsFiles: 'junit.xml'
-
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: 'coverage/cobertura-coverage.xml'
-
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'build'
