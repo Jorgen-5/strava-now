@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import Home from "./pages/Home";
+import StravaRedirect from "./pages/StravaRedirect";
+import Data from "./pages/Data";
+import ShowActivity from "./pages/ShowActivity";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Router>
+            <Switch>
+                <Route path="/" component={Home} exact={true} />
+                <Route path="/redirect" component={StravaRedirect} />
+                <Route path="/data" component={Data} />
+                <Route path="/showactivity/:activityId" component={ShowActivity} />t
+            </Switch>
+        </Router>
     </div>
   );
 }
