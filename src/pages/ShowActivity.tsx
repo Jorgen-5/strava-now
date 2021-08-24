@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 import {Lap} from "../utils/Lap";
 import {DetailedActivity} from "../utils/DetailedActivity";
 import {AvgTimes, LapTimes} from "../utils/InterfaceTypes";
-
+import "../styles/gridstyle.scss"
+import {Container, Col, Row} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ShowActivity() {
     const [laps, setLaps] = useState<Lap[]>([]);
@@ -71,6 +73,49 @@ function ShowActivity() {
         } return null
     }
 
+    return(
+        <div>
+            <Container>
+                <Row>
+                    <h1>{activity.name}</h1>
+                    <div>Distance: {activity.distance}</div>
+                </Row>
+                <Row>
+                    {Object.values(filterdLaps).map((lap) => {
+                        return (
+                            <Col>
+                                <p>{lap.set}</p>
+                                {
+                                    lap.times?.map((lapTime : number) => {
+                                        const showTime = new Date(lapTime * 1000).toISOString().substr(14, 5)
+                                        return (<div>{showTime}</div>)
+                                    })
+                                }
+                            </Col>
+                        )
+                    })}
+                </Row>
+                <Row>
+                    Avg time:
+                </Row>
+                <Row>
+                    {Object.values(avgTime).map((workout) => {
+                        console.log(avgTime)
+                        return (
+                            <Col>
+                                <p> For {workout.workout}: {secToMin(workout?.avg)} </p>
+                            </Col>
+                        )
+                    })}
+                </Row>
+            </Container>
+        </div>
+    )
+
+
+
+
+    /*
     return (
         <div>
             <h1>{activity.name}</h1>
@@ -88,7 +133,6 @@ function ShowActivity() {
                                 })
                             }
                         </div>
-
                     )
                 })}
             </div>
@@ -105,5 +149,6 @@ function ShowActivity() {
             </div>
         </div>
     )
+     */
 }
 export default ShowActivity;

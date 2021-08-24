@@ -3,6 +3,8 @@ import { useStateManager } from "../utils/StateManager";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {SummaryActivity} from "../utils/SummaryActivity";
+import {Button} from 'react-bootstrap';
+import "../styles/data.scss"
 
 function Data() {
     const { athlete } = useStateManager();
@@ -29,8 +31,11 @@ function Data() {
             {activities.map((activity, i) => {
                 return(
                     <li key={i}>
-                        <Link to={  `/showactivity/${activities[i].id}` }>
-                            {activities[i].name}
+                        <Link to={`/showactivity/${activities[i].id}`}>
+
+                            <Button variant='primary'>
+                                {activities[i].name + ",     Distance: " + activities[i].distance}
+                            </Button>
                         </Link>
                     </li>
                 )
