@@ -5,7 +5,6 @@ import App from './App';
 import {StateProvider} from "./utils/StateManager";
 
 ReactDOM.render(
-
     <React.StrictMode>
       <StateProvider>
         <App />
