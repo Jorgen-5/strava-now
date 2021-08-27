@@ -5,8 +5,8 @@ import {Lap} from "../utils/Lap";
 import {DetailedActivity} from "../utils/DetailedActivity";
 import {AvgTimes, LapTimes} from "../utils/InterfaceTypes";
 import "../styles/gridstyle.scss"
-import {Container, Col, Row} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from '../components/header'
+
 
 function ShowActivity() {
     const [laps, setLaps] = useState<Lap[]>([]);
@@ -18,7 +18,6 @@ function ShowActivity() {
         "workout": "",
         "avgLapTime": 0,
     });
-
     const [activity, setActivity] = useState<DetailedActivity>({});
     const { activityId }: { activityId: string } = useParams();
     const accessToken = localStorage.getItem('accessToken') as string;
@@ -30,7 +29,6 @@ function ShowActivity() {
             { headers: { Authorization: `Bearer ${accessToken}` } }
         ).then((res) => {
             setActivity(res.data);
-            console.log(res.data);
         });
 
         //Gets the laps
@@ -47,22 +45,20 @@ function ShowActivity() {
 
 
     function filterLaps(lapData : Lap[]) {
-        axios.post<LapTimes>('https://getalllaptimes.azurewebsites.net/api/GetAllLaps?code=pQDbaYgZAHbaQ6K9w1RieyTkEzUnRZlrDTMwOUwosj1Oef48MrP3Hg==', lapData,
+        axios.post<LapTimes>('https://stravaanalysis.azurewebsites.net/api/get-all-laps?code=s8nxEZlheag4dVSXWVw7aelwPpiaSl4otjoAOqXXsdGaviNWOv7Wjg==', lapData,
             {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
             setFilterdLaps(res.data);
-            console.log(res.data)
         });
     }
 
     function avgLaps(lapData : Lap[]) {
-        axios.post<AvgTimes>('https://getavgtimeforeachdistance.azurewebsites.net/api/HttpTrigger1?code=YTQP/jtFhrTosLCzFrqI/lkvGqfJe3q9XKoKtSdIk5hNoYO32FhF8w==', lapData,
+        axios.post<AvgTimes>('https://stravaanalysis.azurewebsites.net/api/get-avg?code=hESs7AUwABUdfXdDHCgecmmotlIwstofXdqM01C9x81KceeFqNRIsw==', lapData,
             {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
             setAvgTime(res.data);
-            console.log(res.data)
         });
     }
 
@@ -73,82 +69,64 @@ function ShowActivity() {
         } return null
     }
 
-    return(
-        <div>
-            <Container>
-                <Row>
-                    <h1>{activity.name}</h1>
-                    <div>Distance: {activity.distance}</div>
-                </Row>
-                <Row>
-                    {Object.values(filterdLaps).map((lap) => {
-                        return (
-                            <Col>
-                                <p>{lap.set}</p>
-                                {
-                                    lap.times?.map((lapTime : number) => {
-                                        const showTime = new Date(lapTime * 1000).toISOString().substr(14, 5)
-                                        return (<div>{showTime}</div>)
-                                    })
-                                }
-                            </Col>
-                        )
-                    })}
-                </Row>
-                <Row>
-                    Avg time:
-                </Row>
-                <Row>
-                    {Object.values(avgTime).map((workout) => {
-                        console.log(avgTime)
-                        return (
-                            <Col>
-                                <p> For {workout.workout}: {secToMin(workout?.avg)} </p>
-                            </Col>
-                        )
-                    })}
-                </Row>
-            </Container>
-        </div>
-    )
+    function handleClick(id : number){
+
+        var lapArray : number[] = [];
+        Object.values(filterdLaps).map((lap) => {
+            lapArray.push(lap.times);
+        });
+        console.log(lapArray[id])
+        navigator.clipboard.writeText(lapArray[id].toString())
+    }
 
 
-
-
-    /*
     return (
         <div>
-            <h1>{activity.name}</h1>
-            <div>Distance: {activity.distance}</div>
-            <div>Time: {activity.movingTime}</div>
-            <div>
-                {Object.values(filterdLaps).map((lap) => {
-                    return (
-                        <div>
-                        <p>{lap.set}</p>
-                            {
-                                lap.times?.map((lapTime : number) => {
-                                    const showTime = new Date(lapTime * 1000).toISOString().substr(14, 5)
-                                    return (<div>{showTime}</div>)
-                                })
-                            }
+            <Header></Header>
+            <div className="h-12"></div>
+            <div className="font-bold text-3xl"> Lap times </div>
+            {Object.values(filterdLaps).map((lap, id:number) => {
+                return (
+                    <div className="card shadow">
+                        <button onClick={() => handleClick(id)}>
+                            <div className="card-body">
+                                <h2 className="card-title">Set distance: {lap.set}m</h2>
+                                <div className="card text-accent-content">
+                                    <div className="card-body bg-neutral">
+                                        {
+                                            lap.times?.map((lapTime : number, index :  number) => {
+                                                const showTime = new Date(lapTime * 1000).toISOString().substr(14, 5)
+                                                return (<div className="font-bold">Lap {index + 1}: {showTime}</div>)
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                )
+            })}
+
+            <i className="far fa-clone"> </i>
+
+            <div className=" h-12 font-bold"> </div>
+            <div className="font-bold text-3xl"> Avrerage times </div>
+            {Object.values(avgTime).map((workout) => {
+                return (
+                    <div className="card shadow">
+                        <div className="card-body">
+                            <h2 className="card-title">{workout.workout}s</h2>
+                            <div className="card text-accent-content">
+                                <div className="card-body bg-neutral">
+                                    <div className="font-bold"> Avg time: {secToMin(workout?.avg)}.{Math.floor(Math.abs(workout?.avg))} </div>
+                                </div>
+                            </div>
                         </div>
-                    )
-                })}
-            </div>
-            <div>
-                Avg time:
-                {Object.values(avgTime).map((workout) => {
-                    console.log(avgTime)
-                    return (
-                        <div>
-                            <p> For {workout.workout}: {secToMin(workout?.avg)} </p>
-                        </div>
-                    )
-                })}
-            </div>
+                    </div>
+                );
+            })}
         </div>
-    )
-     */
+    );
+
 }
 export default ShowActivity;
