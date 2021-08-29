@@ -27,33 +27,20 @@ function Data() {
     return (
         <div>
             <h1>Hi, {athlete?.firstname}!</h1>
-
             {activities.map((activity, i) => {
                 return(
                     <li key={i}>
-                        <Link to={`/showactivity/${activities[i].id}`}>
-
-                            <Button variant='primary'>
-                                {activities[i].name + ",     Distance: " + activities[i].distance}
-                            </Button>
-                        </Link>
+                        <div className="h-6">
+                            <Link to={`/showactivity/${activities[i].id}`}>
+                                <Button variant='primary'>
+                                    {activities[i].name + ",     Distance: " + activities[i].distance}
+                                </Button>
+                            </Link>
+                        </div>
                     </li>
                 )
             })}
         </div>
     )
 }
-
-/*
-const YourDistance = ({ user : User, returnTokens  : string}) => {
-    return (
-        <div>
-            <h1>Hi, {returnTokens.athlete.firstname}!</h1>
-            <h2>{user.data.all_run_totals.distance}</h2>
-            <h2>{user.data.all_ride_totals.distance}</h2>
-            <h2>{user.data.all_swim_totals.distance}</h2>
-        </div>
-    );
-};
-*/
 export default Data;

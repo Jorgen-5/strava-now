@@ -1,7 +1,7 @@
 import React from "react";
 //import '../styles/buttonstyle.scss';
 import "tailwindcss/tailwind.css"
-
+import Header from '../components/header'
 
 const { REACT_APP_CLIENT_ID } = process.env;
 const redirectUrl = process.env.NODE_ENV === "development"
@@ -15,8 +15,9 @@ const handleLogin = () => {
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
-            <button onClick={handleLogin} className="btn btn-primary rounded-full">Connect with Strava</button>
+            <Header></Header>
+            <div className="h-12"></div>
+            <button onClick={handleLogin} className="btn btn-primary rounded-full">Sign in with Strava</button>
         </div>
     );
 };

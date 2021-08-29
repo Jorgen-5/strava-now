@@ -1,29 +1,23 @@
 import React from 'react';
 import {LapTimes} from "../utils/InterfaceTypes";
-
-interface Props {
-    lap: LapTimes;
-}
+import {Link} from 'react-router-dom';
 
 function Header() {
     return (
         <div>
             <ul className="menu w-screen items-stretch shadow-lg bg-base-100 horizontal">
                 <li>
-                    <a>
-                        With link
+                    <a >
+                        <Link to={'/'}> Home </Link>
                     </a>
                 </li>
                 <li>
                     <a>
-                        Bordered
+                        <Link to={'/data'}> Workouts </Link>
                     </a>
                 </li>
                 <li>
                     <a>
-
-                        With icon
-
                     </a>
                 </li>
             </ul>
