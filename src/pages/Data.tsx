@@ -29,7 +29,8 @@ function Data() {
             <h1>Hi, {athlete?.firstname}!</h1>
             {activities.map((activity, i) => {
                 return(
-                    <li key={i}>
+                    <ul className="menu h-16">
+                    <li key={i} className="menu-title">
                         <div className="h-6">
                             <Link to={`/showactivity/${activities[i].id}`}>
                                 <Button variant='primary'>
@@ -38,9 +39,11 @@ function Data() {
                             </Link>
                         </div>
                     </li>
+                    </ul>
                 )
             })}
         </div>
+
     )
 }
 export default Data;
