@@ -1,5 +1,4 @@
 import React from 'react';
-import {LapTimes} from "../utils/InterfaceTypes";
 import {Link} from 'react-router-dom';
 
 function Header() {
@@ -7,18 +6,14 @@ function Header() {
         <div>
             <ul className="menu w-screen items-stretch shadow-lg bg-base-100 horizontal">
                 <li>
-                    <a >
+                    <div>
                         <Link to={'/'}> Home </Link>
-                    </a>
+                    </div>
                 </li>
                 <li>
-                    <a>
+                    <div>
                         <Link to={'/data'}> Workouts </Link>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </div>
