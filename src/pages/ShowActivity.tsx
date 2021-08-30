@@ -9,7 +9,7 @@ import Header from '../components/header'
 
 
 function ShowActivity() {
-    const [laps, setLaps] = useState<Lap[]>([]);
+    //const [laps, setLaps] = useState<Lap[]>([]);
     const [filterdLaps, setFilterdLaps] = useState<LapTimes>({
         "set": "",
         "times": [],
@@ -18,7 +18,7 @@ function ShowActivity() {
         "workout": "",
         "avgLapTime": 0,
     });
-    const [activity, setActivity] = useState<DetailedActivity>({});
+    //const [activity, setActivity] = useState<DetailedActivity>({});
     const { activityId }: { activityId: string } = useParams();
     const accessToken = localStorage.getItem('accessToken') as string;
 
@@ -28,7 +28,7 @@ function ShowActivity() {
             `https://www.strava.com/api/v3/activities/${activityId}?include_all_efforts=False`,
             { headers: { Authorization: `Bearer ${accessToken}` } }
         ).then((res) => {
-            setActivity(res.data);
+            //setActivity(res.data);
         });
 
         //Gets the laps
@@ -36,9 +36,11 @@ function ShowActivity() {
             `https://www.strava.com/api/v3/activities/${activityId}/laps`,
             { headers: { Authorization: `Bearer ${accessToken}` } }
         ).then((res) => {
-            setLaps(res.data);
-            filterLaps(res.data);
-            avgLaps(res.data);
+            //setLaps(res.data);
+            if(res.data.length > 1){
+                filterLaps(res.data);
+                avgLaps(res.data);
+            }
         });
 
     }, [accessToken, activityId])
@@ -73,7 +75,7 @@ function ShowActivity() {
 
         var lapArray : number[] = [];
         Object.values(filterdLaps).map((lap) => {
-            lapArray.push(lap.times);
+            return lapArray.push(lap.times);
         });
         console.log(lapArray[id])
         navigator.clipboard.writeText(lapArray[id].toString())
