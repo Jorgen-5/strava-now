@@ -30,15 +30,15 @@ function Data() {
             {activities.map((activity, i) => {
                 return(
                     <ul key={i} className="menu h-16">
-                    <li key={i} className="menu-title">
-                        <div className="h-6">
-                            <Link to={`/showactivity/${activities[i].id}`}>
-                                <Button variant='primary'>
-                                    {activities[i].name + ",     Distance: " + activities[i].distance}
-                                </Button>
-                            </Link>
-                        </div>
-                    </li>
+                        <li key={i} className="menu-title">
+                            <div className="h-6">
+                                <Link to={`/showactivity/${activities[i].id}`}>
+                                    <Button variant='primary'>
+                                        {activities[i].name + ",     Distance: " + activities[i].distance}
+                                    </Button>
+                                </Link>
+                            </div>
+                        </li>
                     </ul>
                 )
             })}
