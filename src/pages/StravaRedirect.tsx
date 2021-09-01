@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import _ from "lodash";
 
-import {cleanUpAuthToken, testAuthGetter, getUserData,} from "../utils/functions";
+import {cleanUpAuthToken, testAuthGetter} from "../utils/functions";
 import { useHistory, useLocation } from "react-router-dom";
 import { useStateManager } from "../utils/StateManager";
 
@@ -37,7 +37,7 @@ function StravaRedirect() {
                 //console.log(localStorage.getItem('accessToken'))
 
                 //console.log("Tokens: " + tokens.data)
-                setAthlete(tokens.athlete);
+                //setAthlete(tokens.athlete);
                 //const accessToken = tokens.access_token;
                 //console.log("Access token: " + accessToken)
                 //console.log("Local storage token: " + localStorage.getItem('accessToken'));
