@@ -66,17 +66,28 @@ function ShowActivity() {
         if (!isNaN(sec)) {
             const min = new Date(sec * 1000).toISOString().substr(14, 5)
             return min
-        } return null
+        } return ""
     }
+
+
+
 
     function handleClick(id : number){
 
+        //Gets the laps from state
         var lapArray : number[] = [];
         Object.values(filterdLaps).map((lap) => {
             lapArray.push(lap.times);
         });
-        console.log(lapArray[id])
-        navigator.clipboard.writeText(lapArray[id].toString())
+        //Converts laps from lap array
+        var currentLap = Object.values(lapArray[id]);
+
+        //Converts secconds to minute of each lap
+        for (let i = 0; i < currentLap.length; i++) {
+            currentLap[i] = secToMin(currentLap[i])
+        }
+
+        navigator.clipboard.writeText(currentLap.join(" "))
     }
 
 

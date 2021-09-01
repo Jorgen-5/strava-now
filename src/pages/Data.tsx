@@ -10,7 +10,6 @@ function Data() {
     const { athlete } = useStateManager();
     const [activities, setActivities] = useState<SummaryActivity[]>([]);
 
-
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken') as string;
         //const allActivities = getAllActivities(accessToken);
