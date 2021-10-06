@@ -1,5 +1,4 @@
 import React from "react";
-//import '../styles/buttonstyle.scss';
 import "tailwindcss/tailwind.css"
 import Header from '../components/header'
 
