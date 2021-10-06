@@ -12,6 +12,7 @@
 
 import * as models from './models';
 
+
 export interface SummaryActivity extends models.MetaActivity {
     /**
      * The identifier provided at upload time

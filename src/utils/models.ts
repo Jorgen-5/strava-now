@@ -1,54 +1,70 @@
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ActivityStats';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ActivityTotal';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ActivityType';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ActivityZone';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/AltitudeStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/BaseStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/CadenceStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/Comment';
+/*
+export * from './ActivityStats';
+export * from './ActivityTotal';
+*/
+export * from './ActivityType';
+/*
+export * from './ActivityZone';
+export * from './AltitudeStream';
+export * from './BaseStream';
+export * from './CadenceStream';
+export * from './Comment';
+ */
 export * from './DetailedActivity';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/DetailedAthlete';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/DetailedClub';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/DetailedGear';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/DetailedSegment';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/DetailedSegmentEffort';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/DistanceStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ExplorerResponse';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ExplorerSegment';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/Fault';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/HeartRateZoneRanges';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/HeartrateStream';
+/*
+export * from './DetailedAthlete';
+export * from './DetailedClub';
+export * from './DetailedGear';
+export * from './DetailedSegment';
+*/
+export * from './DetailedSegmentEffort';
+/*
+export * from './DistanceStream';
+export * from './ExplorerResponse';
+export * from './ExplorerSegment';
+export * from './Fault';
+export * from './HeartRateZoneRanges';
+export * from './HeartrateStream';
+*/
 export * from './Lap';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/LatLng';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/LatLngStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/MetaActivity';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/MetaAthlete';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/MetaClub';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ModelError';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/MovingStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/PhotosSummary';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/PolylineMap';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/PowerStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/PowerZoneRanges';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/Route';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/RunningRace';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SmoothGradeStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SmoothVelocityStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/Split';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/StreamSet';
+export * from './LatLng';
+//export * from './LatLngStream';
+export * from './MetaActivity';
+export * from './MetaAthlete';
+/*
+export * from './MetaClub';
+export * from './ModelError';
+export * from './MovingStream';
+ */
+export * from './PhotosSummary';
+export * from './PolylineMap';
+/*
+export * from './PowerStream';
+export * from './PowerZoneRanges';
+export * from './Route';
+export * from './RunningRace';
+export * from './SmoothGradeStream';
+export * from './SmoothVelocityStream';
+*/
+export * from './Split';
+//export * from './StreamSet';
 export * from './SummaryActivity';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SummaryAthlete';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SummaryClub';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SummaryGear';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SummaryPRSegmentEffort';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SummarySegment';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/SummarySegmentEffort';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/TemperatureStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/TimeStream';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/TimedZoneDistribution';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/TimedZoneRange';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/UpdatableActivity';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/Upload';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ZoneRange';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/ZoneRanges';
-export * from '../../../../Downloads/typescript-jquery-client 2/model/Zones';
+/*
+export * from './SummaryAthlete';
+export * from './SummaryClub';
+*/
+export * from './SummaryGear';
+export * from './SummaryPRSegmentEffort';
+export * from './SummarySegment';
+export * from './SummarySegmentEffort';
+/*
+export * from './TemperatureStream';
+export * from './TimeStream';
+export * from './TimedZoneDistribution';
+export * from './TimedZoneRange';
+export * from './UpdatableActivity';
+export * from './Upload';
+export * from './ZoneRange';
+export * from './ZoneRanges';
+export * from './Zones';
+ */
