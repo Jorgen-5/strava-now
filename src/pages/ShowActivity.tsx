@@ -47,7 +47,7 @@ function ShowActivity() {
 
 
     function filterLaps(lapData : Lap[]) {
-        axios.post<LapTimes>('https://stravaanalysis.azurewebsites.net/api/get-all-laps?code=s8nxEZlheag4dVSXWVw7aelwPpiaSl4otjoAOqXXsdGaviNWOv7Wjg==', lapData,
+        axios.post<LapTimes>('https://strava-img2-b55cfzx33q-nw.a.run.app/getAllLaps', lapData,
             {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
@@ -56,7 +56,7 @@ function ShowActivity() {
     }
 
     function avgLaps(lapData : Lap[]) {
-        axios.post<AvgTimes>('https://stravaanalysis.azurewebsites.net/api/get-avg?code=hESs7AUwABUdfXdDHCgecmmotlIwstofXdqM01C9x81KceeFqNRIsw==', lapData,
+        axios.post<AvgTimes>('https://strava-img2-b55cfzx33q-nw.a.run.app/getAvgLaps', lapData,
             {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
