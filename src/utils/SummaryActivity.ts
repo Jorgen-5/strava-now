@@ -39,7 +39,7 @@ export interface SummaryActivity extends models.MetaActivity {
     /**
      * The activity's moving time, in seconds
      */
-    movingTime?: number;
+    moving_time?: number;
 
     /**
      * The activity's elapsed time, in seconds
@@ -152,7 +152,7 @@ export interface SummaryActivity extends models.MetaActivity {
     /**
      * The activity's average speed, in meters per second
      */
-    averageSpeed?: number;
+    average_speed?: number;
 
     /**
      * The activity's max speed, in meters per second
