@@ -47,7 +47,7 @@ function ShowActivity() {
 
 
     function filterLaps(lapData : Lap[]) {
-        axios.post<LapTimes>('https://strava-img2-b55cfzx33q-nw.a.run.app/getAllLaps', lapData,
+        axios.post<LapTimes>('https://strava-fun.herokuapp.com/getAllLaps', lapData,
             {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
@@ -56,7 +56,7 @@ function ShowActivity() {
     }
 
     function avgLaps(lapData : Lap[]) {
-        axios.post<AvgTimes>('https://strava-img2-b55cfzx33q-nw.a.run.app/getAvgLaps', lapData,
+        axios.post<AvgTimes>('https://strava-fun.herokuapp.com/getAvgLaps', lapData,
             {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => {
@@ -100,7 +100,7 @@ function ShowActivity() {
             <div className="font-bold text-3xl"> Lap times </div>
             {Object.values(filterdLaps).map((lap, id:number) => {
                 return (
-                    <div className="card shadow">
+                    <div className="card">
                         <button onClick={() => handleClick(id)}>
                             <div className="card-body">
                                 <h2 className="card-title">Set distance: {lap.set}m</h2>
@@ -121,12 +121,11 @@ function ShowActivity() {
             })}
 
             <i className="far fa-clone"> </i>
-
             <div className=" h-12 font-bold"> </div>
             <div className="font-bold text-3xl"> Avrerage times </div>
             {Object.values(avgTime).map((workout) => {
                 return (
-                    <div className="card shadow">
+                    <div className="card">
                         <div className="card-body">
                             <h2 className="card-title">{workout.workout}s</h2>
                             <div className="card text-accent-content">

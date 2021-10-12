@@ -24,15 +24,54 @@ function Data() {
     }, [])
 
     return (
+
         <div>
-            <h1>Hi, {athlete?.firstname}!</h1>
+            {activities.map((activity, i) => {
+                    return(
+                        <div className="container mx-auto ">
+                            <div className="card w-full h-full">
+                                <div className="card w-auto bordered text-primary-content m-2 bg-neutral">
+                                    <div className="card-title"> {activity.name} </div>
+                                    <div className="card-body">
+                                        <div className="flex flex-row w-full">
+                                            <div className="grid flex-grow place-items-center">
+                                               Distance: {activity.distance}m
+                                            </div>
+                                            <div className="divider divider-vertical"></div>
+                                            <div className="grid flex-grow place-items-center">
+                                                Time: {activity.moving_time}s
+                                            </div>
+                                            <div className="divider divider-vertical"></div>
+                                            <div className="grid flex-grow place-items-center">
+                                                Pace: {activity.average_speed}
+                                            </div>
+                                        </div>
+                                        <div className="justify-center card-actions">
+                                            <Link to={`/showactivity/${activities[i].id}`}>
+                                                <button className="btn btn-wide bg-neutral-focus">
+                                                    Click here for more info
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                )
+                })}
+        </div>
+
+        /*
+        <div>
+
+            <div className="h-12"></div>
             {activities.map((activity, i) => {
                 return(
                     <ul key={i} className="menu h-16">
                         <li key={i} className="menu-title">
-                            <div className="h-6">
+                            <div className="h-12">
                                 <Link to={`/showactivity/${activities[i].id}`}>
-                                    <Button variant='primary'>
+                                    <Button variant='primary btn-wide btn-sm'>
                                         {activities[i].name + ",     Distance: " + activities[i].distance}
                                     </Button>
                                 </Link>
@@ -42,6 +81,9 @@ function Data() {
                 )
             })}
         </div>
+        */
+
+
 
     )
 }

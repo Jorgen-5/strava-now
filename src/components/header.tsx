@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 function Header() {
     return (
         <div>
-            <ul className="menu w-screen items-stretch shadow-lg bg-base-100 horizontal">
+            <div className="menu w-screen items-stretch shadow-lg bg-base-100 horizontal">
                 <li>
                     <div>
                         <Link to={'/'}> Home </Link>
@@ -15,7 +15,7 @@ function Header() {
                         <Link to={'/data'}> Workouts </Link>
                     </div>
                 </li>
-            </ul>
+            </div>
         </div>
     );
 }
