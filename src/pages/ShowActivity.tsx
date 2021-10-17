@@ -21,9 +21,13 @@ function ShowActivity() {
   const accessToken = localStorage.getItem("accessToken") as string;
   const [multipleLaps, setMultipleLaps] = useState(false);
   const [avgLoaded, setAvgLoaded] = useState(false);
+  const [timesLoaded, setTimesLoaded] = useState(false);
+  const [lapsExist, setLapsExists] = useState(true);
 
   useEffect(() => {
     setAvgLoaded(false);
+    setTimesLoaded(false);
+
     //Gets the activity
     axios
       .get<DetailedActivity>(
@@ -47,6 +51,7 @@ function ShowActivity() {
           avgLaps(res.data);
           setMultipleLaps(true);
         } else {
+          setLapsExists(false);
           //setFilterdLaps({ set: "", times: [activity?.elapsedTime] });
         }
       });
@@ -59,6 +64,7 @@ function ShowActivity() {
       })
       .then((res) => {
         setFilterdLaps(res.data);
+        setTimesLoaded(true);
       });
   }
 
@@ -101,59 +107,73 @@ function ShowActivity() {
     <div>
       <Header></Header>
       <div className="h-12"></div>
-      <div className="font-bold text-3xl"> Lap times </div>
-      {Object.values(filterdLaps).map((lap, id: number) => {
-        return (
-          <div className="card">
-            <button onClick={() => handleClick(id)}>
-              <div className="card-body">
-                <h2 className="card-title">Set distance: {lap.set}m</h2>
-                <div className="card text-accent-content">
-                  <div className="card-body bg-neutral">
-                    {lap.times?.map((lapTime: number, index: number) => {
-                      const showTime = new Date(lapTime * 1000)
-                        .toISOString()
-                        .substr(14, 5);
-                      return (
-                        <div className="font-bold">
-                          Lap {index + 1}: {showTime}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </button>
-          </div>
-        );
-      })}
-
-      {avgLoaded ? (
+      {lapsExist ? (
         <div>
-          <i className="far fa-clone"> </i>
-          <div className=" h-12 font-bold"> </div>
-          <div className="font-bold text-3xl"> Avrerage times </div>
-          {Object.values(avgTime).map((workout) => {
-            return (
-              <div className="card">
-                <div className="card-body">
-                  <h2 className="card-title">{workout.workout}s</h2>
-                  <div className="card text-accent-content">
-                    <div className="card-body bg-neutral">
-                      <div className="font-bold">
-                        {" "}
-                        Avg time: {secToMin(workout?.avg)}.
-                        {Math.floor(Math.abs(workout?.avg))}{" "}
+          {avgLoaded ? (
+            <div>
+              <div className="font-bold text-3xl"> Lap times </div>
+              {Object.values(filterdLaps).map((lap, id: number) => {
+                return (
+                  <div className="card">
+                    <button onClick={() => handleClick(id)}>
+                      <div className="card-body">
+                        <h2 className="card-title">Set distance: {lap.set}m</h2>
+                        <div className="card text-accent-content">
+                          <div className="card-body bg-neutral">
+                            {lap.times?.map(
+                              (lapTime: number, index: number) => {
+                                const showTime = new Date(lapTime * 1000)
+                                  .toISOString()
+                                  .substr(14, 5);
+                                return (
+                                  <div className="font-bold">
+                                    Lap {index + 1}: {showTime}
+                                  </div>
+                                );
+                              }
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div> Loading... </div>
+          )}
+
+          {avgLoaded ? (
+            <div>
+              <i className="far fa-clone"> </i>
+              <div className=" h-12 font-bold"> </div>
+              <div className="font-bold text-3xl"> Avrerage times </div>
+              {Object.values(avgTime).map((workout) => {
+                return (
+                  <div className="card">
+                    <div className="card-body">
+                      <h2 className="card-title">{workout.workout}s</h2>
+                      <div className="card text-accent-content">
+                        <div className="card-body bg-neutral">
+                          <div className="font-bold">
+                            {" "}
+                            Avg time: {secToMin(workout?.avg)}.
+                            {Math.floor(Math.abs(workout?.avg))}{" "}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          ) : (
+            <div></div> //Avg time dont exist
+          )}
         </div>
       ) : (
-        <div></div>
+        <div> No laps to show :( </div> //Laps dont exitst
       )}
     </div>
   );
