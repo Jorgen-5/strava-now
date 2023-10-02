@@ -16,7 +16,8 @@ You will also see any lint errors in the console.
 
 ### `The following git repo containes the backend used for the project`
 https://github.com/Jorgen-5/strava-bakcend
-It is not necessary to run the backend as the backend is hosted in Azure
+
+Note: It is not necessary to run the backend as the backend is hosted in Azure
 
 ### `npm test`
 
