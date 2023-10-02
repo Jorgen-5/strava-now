@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -27,6 +28,18 @@
 .App-link {
   color: #61dafb;
 }
+
+.right-aligned {
+  justify-content: flex-end;
+}
+
+.card-align {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rowC{display:flex; flex-direction:row;}
+
 
 @keyframes App-logo-spin {
   from {
