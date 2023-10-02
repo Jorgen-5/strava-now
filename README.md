@@ -14,6 +14,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+### `The following git repo containes the backend used for the project`
+https://github.com/Jorgen-5/strava-bakcend
+It is not necessary to run the backend as the backend is hosted in Azure
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
