@@ -105,22 +105,26 @@ function ShowActivity() {
     navigator.clipboard.writeText(currentLap.join(" "));
   }
 
+
   return (
     <div>
       <Header></Header>
       <div className=""></div>
       {lapsExist ? (
         <div>
-          {avgLoaded ? (
+          {timesLoaded ? (
+            // Lap times loaded
             <Navbar className="border-bottom border-dark">
                 <Container>
                     <Nav className="me-auto my-2 my-lg-0">
                         <Row className="gap-3">
                         {Object.values(filterdLaps).map((lap, id: number) => {
+                            // Maps over all set and displays them
                             return (
                                 <div >
                                     <h2 className="">Set distance: {lap.set}m</h2>
                                     {lap.times?.map(
+                                        // Maps over all laps and displays them
                                         (lapTime: number, index: number) => {
                                         const showTime = new Date(lapTime * 1000)
                                             .toISOString()
@@ -150,6 +154,7 @@ function ShowActivity() {
                     <Nav className="me-auto my-2 my-lg">
                         <Row className="gap-3">
                             {Object.values(avgTime).map((workout) => {
+                                // Maps all sets in the workout and displays the avg time for each set
                                 return (
                                     <div className="">
                                         <h2 className="">{workout.workout} meters</h2>

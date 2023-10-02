@@ -11,7 +11,6 @@ function StravaRedirect() {
 
     useEffect(() => {
         const authenticate = async () => {
-            //const { history, location } = props;
 
             try {
                 // If not redirected to Strava, return to home

@@ -9,6 +9,7 @@ const handleLogin = () => {
     window.location.href = `http://www.strava.com/oauth/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=read_all,activity:read_all`;
 };
 
+// Main header for the website, also handles redirect to strava
 function Header() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">

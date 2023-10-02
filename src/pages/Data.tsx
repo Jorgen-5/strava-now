@@ -6,7 +6,7 @@ import Header from "../components/header";
 import {Button, Row, Col, Navbar, Container} from 'react-bootstrap';
 import Moment from 'moment';
 
-
+//Convert seconds to minutes
 function secToMin(sec: number) {
     if (!isNaN(sec)) {
       const min = new Date(sec * 1000).toISOString().substr(14, 5);
@@ -15,6 +15,7 @@ function secToMin(sec: number) {
     return "";
 }
 
+//Convert meters to kilometers
 function mToKm(m: number) {
     if (!isNaN(m)) {
       const min = (m / 1000).toFixed(2);;
@@ -25,7 +26,7 @@ function mToKm(m: number) {
 
 function Data() {
   const [activities, setActivities] = useState<SummaryActivity[]>([]);
-  const [pageNum, setPageNum] = useState(70);
+  const [pageNum, setPageNum] = useState(70); 
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken") as string;
@@ -42,7 +43,7 @@ function Data() {
   return (
     <div>
         <Header></Header>
-        {activities.map((activity, i) => {
+        {activities.map((activity, i) => { // Iterates all activities and displays data for each activity
             return (
                 <Navbar expand="lg" className="border-bottom border-dark">
                     <Container>
